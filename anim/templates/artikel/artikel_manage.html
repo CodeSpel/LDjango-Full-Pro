@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<div></div>
+
+{% block page_title %}Manage Artkel{% endblock page_title %}
+<div></div>
+
+{% block contents %}
+<h1>Manage Artikel</h1>
+
+<div class="d-grid gap-2">
+  <a class="btn btn-outline-primary" href="{% url "artikel:create" %}">Tambahkan Artikel</a>
+</div>
+
+<table class="table caption-top mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Judul</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Published</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for artikel in artikel_list %}
+
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{artikel.judul}}</td>
+      <td>{{artikel.kategori}}</td>
+      <td>{{artikel.published}}</td>
+      <td>
+        <a class="btn btn-outline-warning" href="{% url "artikel:update" artikel.id %}" >Edit</a>
+        <a class="btn btn-outline-danger" href="{% url "artikel:delete" artikel.id %}">Delete</a>
+      </td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock contents %} {% comment %} 52 = 37:52 {% endcomment %}
